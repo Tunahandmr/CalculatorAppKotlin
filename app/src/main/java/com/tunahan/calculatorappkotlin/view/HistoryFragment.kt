@@ -1,4 +1,4 @@
-package com.tunahan.calculatorappkotlin
+package com.tunahan.calculatorappkotlin.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import com.tunahan.calculatorappkotlin.databinding.FragmentHistoryBinding
 
 
 class HistoryFragment : Fragment() {
-
 
     private var _binding: FragmentHistoryBinding?=null
     private val binding get() = _binding!!

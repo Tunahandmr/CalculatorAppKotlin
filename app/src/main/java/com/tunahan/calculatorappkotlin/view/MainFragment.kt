@@ -1,16 +1,19 @@
-package com.tunahan.calculatorappkotlin
+package com.tunahan.calculatorappkotlin.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
+import com.tunahan.calculatorappkotlin.R
 import com.tunahan.calculatorappkotlin.databinding.FragmentMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
 
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(),MenuProvider {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -20,6 +23,9 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         return binding.root
     }
 
@@ -54,22 +60,29 @@ class MainFragment : Fragment() {
                 binding.liveResultEditText.text = ""
             }
 
-
-            btnResult.setOnClickListener {
-                val expression = ExpressionBuilder(binding.processEditText.text.toString()).build()
-                val result = expression.evaluate()
-                val longResult = result.toLong()
-
-                if (result == longResult.toDouble()) {
-                    binding.liveResultEditText.text = longResult.toString()
-                } else {
-                    binding.liveResultEditText.text = result.toString()
+            btnDelete.setOnClickListener {
+                val expression = processEditText.text.toString()
+                if (expression.isNotEmpty()) {
+                    processEditText.text = expression.substring(0, expression.length - 1)
                 }
             }
 
+            btnResult.setOnClickListener {
+                try {
+                    val expression = ExpressionBuilder(binding.processEditText.text.toString()).build()
+                    val result = expression.evaluate()
+                    val longResult = result.toLong()
 
+                    if (result == longResult.toDouble()) {
+                        binding.liveResultEditText.text = longResult.toString()
+                    } else {
+                        binding.liveResultEditText.text = result.toString()
+                    }
+                }catch (e:Exception){
+                    Log.d("Exception", "Message: ${e.message}")
+                }
+            }
         }
-
     }
 
     private fun View.appendClick(string: String) {
@@ -78,10 +91,20 @@ class MainFragment : Fragment() {
         }
     }
 
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+       menuInflater.inflate(R.menu.my_menu,menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        when(menuItem.itemId){
+            R.id.history_menu-> println(1)
+        }
+        return false
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }
 
