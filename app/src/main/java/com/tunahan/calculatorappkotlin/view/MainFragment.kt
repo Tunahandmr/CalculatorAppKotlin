@@ -3,34 +3,57 @@ package com.tunahan.calculatorappkotlin.view
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.tunahan.calculatorappkotlin.R
 import com.tunahan.calculatorappkotlin.databinding.FragmentMainBinding
+import com.tunahan.calculatorappkotlin.model.History
+import com.tunahan.calculatorappkotlin.viewmodel.CalculatorViewModel
 import net.objecthunter.exp4j.ExpressionBuilder
 
 
-class MainFragment : Fragment(),MenuProvider {
+class MainFragment : Fragment()//,MenuProvider
+ {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var mCalculatorViewModel: CalculatorViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+
+        mCalculatorViewModel = ViewModelProvider(this).get(CalculatorViewModel::class.java)
+
+        //val menuHost: MenuHost = requireActivity()
+       // menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val appName = resources.getString(R.string.app_name)
+        //menu
+        binding.toolbar.inflateMenu(R.menu.my_menu)
+        binding.toolbar.title=appName
+
+        binding.toolbar.setOnMenuItemClickListener{
+            when(it.itemId){
+                R.id.history_menu-> {
+                    val action =MainFragmentDirections.actionMainFragmentToHistoryFragment()
+                    view.let { Navigation.findNavController(it).navigate(action) }
+                    true
+                }
+                else->false
+            }
+
+        }
 
         with(binding) {
             processEditText.isFocusableInTouchMode = true
@@ -81,6 +104,8 @@ class MainFragment : Fragment(),MenuProvider {
                 }catch (e:Exception){
                     Log.d("Exception", "Message: ${e.message}")
                 }
+
+                insertDataToDatabase()
             }
         }
     }
@@ -91,17 +116,35 @@ class MainFragment : Fragment(),MenuProvider {
         }
     }
 
+
+
+    private fun insertDataToDatabase(){
+
+        val process = binding.processEditText.text.toString()
+        var result = binding.liveResultEditText.text.toString()
+        result = "=$result"
+
+        val historys = History(0,process,result)
+
+        mCalculatorViewModel.addHistory(historys)
+
+    }
+
+     /*
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
        menuInflater.inflate(R.menu.my_menu,menu)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId){
-            R.id.history_menu-> println(1)
+            R.id.history_menu-> {
+                val action =MainFragmentDirections.actionMainFragmentToHistoryFragment()
+                view?.let { Navigation.findNavController(it).navigate(action) }
+            }
         }
         return false
     }
-
+*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

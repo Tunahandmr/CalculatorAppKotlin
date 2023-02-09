@@ -22,5 +22,10 @@
         <action
             android:id="@+id/action_historyFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="myParcel"
+            app:argType="com.tunahan.calculatorappkotlin.model.History"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

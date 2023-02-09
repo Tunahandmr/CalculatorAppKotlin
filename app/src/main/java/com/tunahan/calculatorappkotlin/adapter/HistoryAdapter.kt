@@ -5,27 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tunahan.calculatorappkotlin.R
+import com.tunahan.calculatorappkotlin.databinding.RecyclerRowBinding
 import com.tunahan.calculatorappkotlin.model.History
 
 class HistoryAdapter:RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
 
     var historyList= ArrayList<History>()
 
-    class MyViewHolder(view: View):RecyclerView.ViewHolder(view) {
+    class MyViewHolder(val binding:RecyclerRowBinding):RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_row,parent,false)
-            )
+        val i = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return MyViewHolder(i)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+        holder.binding.islemText.text = historyList.get(position).process
+        holder.binding.sonucText.text = historyList.get(position).result
     }
 
     override fun getItemCount(): Int {
         return historyList.size
+    }
+
+    fun setData(history: List<History>){
+        historyList = history as ArrayList<History>
+        notifyDataSetChanged()
     }
 }

@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".view.MainFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -69,7 +77,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -94,7 +102,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -119,7 +127,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -144,7 +152,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -184,7 +192,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
 
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -208,7 +216,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -232,7 +240,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -256,7 +264,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -295,7 +303,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -319,7 +327,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -343,7 +351,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -367,7 +375,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -406,7 +414,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -430,7 +438,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -454,7 +462,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -478,7 +486,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -518,7 +526,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -542,7 +550,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -567,7 +575,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     app:cardBackgroundColor="@color/myblue"
                     app:cardCornerRadius="36dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="2dp">
 
                     <TextView
                         android:layout_width="match_parent"
