@@ -17,4 +17,4 @@ Technologies I use while developing
  - RecyclerView <br>
  </h3><br>
  
- <img align="center" height="300" alt="guy" src="https://user-images.githubusercontent.com/100168989/218510459-11a8a836-1f4b-4186-b9cd-a7172cd781f4.gif" /> </a>
+ <img align="center"  alt="guy" src="https://user-images.githubusercontent.com/100168989/218510459-11a8a836-1f4b-4186-b9cd-a7172cd781f4.gif" /> </a>
